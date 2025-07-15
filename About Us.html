@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaizen Rayjin - About Us</title>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .header {
+            background-color: #FF914C;
+            color: white;
+            padding: 1.5rem 0;
+            position: relative;
+            height: 140px;
+        }
+        .brand-title-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+        }
+        .brand-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .header-actions {
+            position: absolute;
+            width: 100%;
+            bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            box-sizing: border-box;
+        }
+        .search-box {
+            position: relative;
+        }
+        .search-box input {
+            padding-left: 2.5rem;
+            border-radius: 20px;
+            border: none;
+            height: 36px;
+            width: 180px;
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+        }
+        .search-box input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        .search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 0.9rem;
+        }
+        .login-btn {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .login-btn:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+        .navbar-custom {
+            background-color: white;
+            border-radius: 50px;
+            padding: 1rem 3rem;
+            margin: -25px auto 2rem;
+            width: fit-content;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .navbar-custom .nav-item {
+            margin: 0 1.5rem;
+        }
+        .navbar-custom .nav-link {
+            color: #FF914C;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #FF914C;
+        }
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #FF914C;
+            transition: width 0.3s;
+        }
+        .navbar-custom .nav-link:hover::after {
+            width: 100%;
+        }
+        .divider {
+            border-top: 1px solid rgba(255,255,255,0.3);
+            margin: 1.5rem 0;
+        }
+        .main-content {
+            color: white;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 2rem 0;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .main-heading {
+            color: #FF914C;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        .main-heading1 {
+            color: #FF914C;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        .est-year-container {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        .est-year-container::before {
+            content: "";
+            display: block;
+            width: 1300px;
+            height: 1px;
+            background: #6c757d;
+            position: absolute;
+            left: 50%;
+            top: -15px;
+            transform: translateX(-50%);
+        }
+        .est-year {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .story-content {
+            margin: 0 auto;
+            text-align: center;
+        }
+        .vision-mission-card {
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .vision-mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+            z-index: -1;
+        }
+        .vision-mission-card::before {
+            background-color: #FF914C;
+        }
+        .vision-mission-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        .vision-mission-card ul {
+            padding-left: 1.5rem;
+        }
+        .vision-mission-card li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        .vision-mission-card li::before {
+            content: '•';
+            position: absolute;
+            left: -1.2rem;
+            color: white;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        .social-box {
+            width: 250px;
+            height: 250px;
+            border-radius: 12px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .social-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .social-icon {
+            width: 250px;
+            height: 250px;
+            object-fit: contain;
+        }
+        .gallery {
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .gallery:hover {
+            border: 1px solid #777;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .gallery img {
+            width: 80%;
+            height: auto;
+            max-width: 100px;
+            margin: 0 auto;
+            display: block;
+        }
+        .footer {
+            background-color: #FF914C;
+            color: white;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .description-section {
+            flex: 0 0 50%;
+            padding-right: 2rem;
+        }
+        .info-section {
+            flex: 0 0 20%;
+            margin-left: auto;
+        }
+        .address-section {
+            flex: 0 0 20%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="brand-title-container">
+            <a href="Halaman Utama.html" style="text-decoration: none; color: inherit;">
+                <h1 class="brand-title">Kaizen Rayjin</h1>
+            </a>
+        </div>
+        <div class="header-actions">
+            <a href="login.html" class="login-btn">
+                <i class="fas fa-user me-1"></i> Login
+            </a>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search..." id="search-input">
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <div class="collapse navbar-collapse justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Review.html">REVIEW</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Media.html">MEDIA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="About Us.html">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact.html">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container my-5">
+            <div class="row mb-5">
+                <div class="col-md-6">
+                    <img src="about image.png" alt="Our History" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="section-title">Our History</h2>
+                    <h1 class="main-heading">Kaizen Rayjin</h1>
+                    <p>Kaizen Rayjin adalah platform inovatif yang dirancang untuk membahan pengalaman tehakık dalam dunia parengkat mobile. 
+                        Kami menghadiran informal, rekenmedal, dan ulasan handphone terkini, mulal dari spesifikasi teknis hingga tipe pamakalan, 
+                        semua dalam satu tempat.</p>
+                    <p>Dengan kemitmen terhadap kualitas dan akurasi, Kaizen Rayjin hadir untuk membantu Anda menemukan smartphone yang tepat 
+                        sesuai kebutuhan dan gyyo hidup. Kami percaya bahwa teknologi sehruannya mudah diatese, dipahami, dan digunakan oleh 
+                        semua orang.</p>
+                </div>
+            </div>
+
+        <!-- Our Story -->
+        <div class="row mb-5">
+            <div class="est-year-container">
+                <p class="est-year">EST. 2019</p>
+                <h1 class="main-heading1">Our Story</h1>
+            </div>
+            <div class="col-12">
+                <div class="story-content">
+                    <p>Kaizen (设错) berarti "perbatkan terus-menerus" dalam filosafi Japang, dan Rayjin terinepirosi dari "Rajjin", 
+                        devra petir dalam mitologi Japang, yang kami interpretaskan sebagai simbal kekustan teknologi. Platform ini 
+                        lebih dari keresahan sekenmpek pectina teknologi yang sering menas bilignung dengan informal yang tidak akurat 
+                        dan bisa di dunia gadget. Kami memulal dari blog keati yang membaras handphone terbaut dengan gaya bahasa 
+                        ringar dan jujur. Seiring waktu, dukungan dari komunitas membuat kami bertembang menjadi platform yang lebih profesional, 
+                        lengkap, dan dapat diandakan. Kimi, Kaizen Rayjin tidak hanya menjadi tempat mencari informal, 
+                        tapi juga ruang untuk berbagai aplni, tips, dan edukasi tentang cara menggunakan teknologi secara bijak.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Vision & Mission -->
+        <div class="row">
+        <!-- Vision -->
+        <div class="col-md-6 mb-5">
+            <div class="vision-mission-card vision-card">
+                <h3 class="vision-mission-title">VISION</h3>
+                <ul>
+                    <li>Menjadi platform terdepan dalam memberikan informasi terpercaya, terkini, dan komprehensif tentang teknologi smartphone, 
+                        dengan semangat inovasi dan perbaikan berkelanjutan sesuai filosofi Kaizen.</li>
+                    <li>Menginspirasi inovasi dan perbaikan berkelanjutan sesuai filosofi Kaizen dalam industri teknologi mobile.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Mission -->
+        <div class="col-md-6 mb-5">
+            <div class="vision-mission-card mission-card">
+                <h3 class="vision-mission-title">Mission</h3>
+                <ul>
+                    <li>Menyajikan informasi terupdate dan akurat melalui ulasan, berita, dan perbandingan HP terbaru secara objektif dan mendalam.</li>
+                    <li>Mengedukasi Pengguna Teknologi Membantu masyarakat memahami spesifikasi dan kinerja smartphone melalui penjelasan yang mudah dimengerti.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Media -->
+    <section class="social-media mb-5">
+        <div class="container">
+            <h4 class="text-center mb-4">FOLLOW US ON SOCIAL MEDIA</h4>
+            <div class="d-flex flex-wrap justify-content-center align-items-center">
+                <div class="social-box mx-2 my-2">
+                    <a target="_blank" href="https://www.tiktok.com/explore" class="d-flex flex-column align-items-center justify-content-center">
+                        <img src="tiktok.png" alt="TikTok" class="social-icon">
+                    </a>
+                </div>
+            
+                <div class="social-box mx-2 my-2">
+                    <a target="_blank" href="https://www.youtube.com/" class="d-flex flex-column align-items-center justify-content-center">
+                        <img src="youtube.png" alt="YouTube" class="social-icon">
+                    </a>
+                </div>
+            
+                <div class="social-box mx-2 my-2">
+                    <a target="_blank" href="https://www.instagram.com/" class="d-flex flex-column align-items-center justify-content-center">
+                        <img src="instagram.png" alt="Instagram" class="social-icon">
+                    </a>
+                </div>
+
+                <div class="social-box mx-2 my-2">
+                    <a target="_blank" href="https://x.com/?lang=en-id" class="d-flex flex-column align-items-center justify-content-center">
+                        <img src="twitter.png" alt="Twitter" class="social-icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="footer-content">
+                <div class="description-section">
+                    <h3 class="mb-3">Kaizen Rayjin</h3>
+                    <p>
+                        Kaizen Rayjin adalah sebuah platform teknologi mobile yang menggabungkan 
+                        filosofi perbaikan berkelanjutan (Kaizen) dengan kekuatan inovatif dan dinamis 
+                        ala Rayjin—dawa petir dalam mitologi Jepang. Dibangun untuk menjawab tantangan 
+                        era digital modern, Kaizen Rayjin menghadirkan sistem operasi dan antarmuka yang dirancang 
+                        untuk efisiensi, kecepatan, dan pengalaman pengguna yang intuitif.
+                    </p>
+                    <p>Copyright © 2025 Kaizen Rayjin LLC All Rights Reserved</p>
+                </div>
+                <div class="info-section">
+                    <h5 class="mb-3">INFORMATION</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="Review.html">Review</a></li>
+                        <li class="mb-2"><a href="Media.html">Media</a></li>
+                        <li class="mb-2"><a href="About Us.html">About Us</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="address-section">
+                    <h5 class="mb-3">ADDRESS</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">Shibuya, Tokyo, Japan</li>
+                        <li class="mb-2">info@kaizen.rayjin.com</li>
+                        <li>(+62) 414-8390-4505</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById("search-input").addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault(); // hindari form submit default
+                const input = e.target.value.trim().toLowerCase();
+                const pageMap = {
+                    "review": "Review.html",
+                    "media": "Media.html",
+                    "about": "About Us.html",
+                    "about us": "About Us.html",
+                    "contact": "Contact.html",
+                    "login": "login.html",
+                    "home": "Halaman Utama.html",
+                    "beranda": "Halaman Utama.html"
+                };
+
+                if (pageMap[input]) {
+                    window.location.href = pageMap[input];
+                } else {
+                    alert("Halaman tidak ditemukan. Silakan cek ejaan Anda.");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

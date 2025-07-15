@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaizen Rayjin - Phone</title>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .header {
+            background-color: #FF914C;
+            color: white;
+            padding: 1.5rem 0;
+            position: relative;
+            height: 140px;
+        }
+        .brand-title-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+        }
+        .brand-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .header-actions {
+            position: absolute;
+            width: 100%;
+            bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            box-sizing: border-box;
+        }
+        .search-box {
+            position: relative;
+        }
+        .search-box input {
+            padding-left: 2.5rem;
+            border-radius: 20px;
+            border: none;
+            height: 36px;
+            width: 180px;
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+        }
+        .search-box input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        .search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 0.9rem;
+        }
+        .login-btn {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .login-btn:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+        .navbar-custom {
+            background-color: white;
+            border-radius: 50px;
+            padding: 1rem 3rem;
+            margin: -25px auto 2rem;
+            width: fit-content;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .navbar-custom .nav-item {
+            margin: 0 1.5rem;
+        }
+        .navbar-custom .nav-link {
+            color: #FF914C;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #FF914C;
+        }
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #FF914C;
+            transition: width 0.3s;
+        }
+        .navbar-custom .nav-link:hover::after {
+            width: 100%;
+        }
+        .divider {
+            border-top: 1px solid rgba(255,255,255,0.3);
+            margin: 1.5rem 0;
+        }
+        .main-content {
+            color: white;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 2rem 0;
+        }
+        .badge {
+            font-size: 0.9rem;
+            padding: 0.35em 0.65em;
+        }
+        .product-image-container:hover img {
+            transform: scale(1.03);
+        }
+        .product-image-container:hover .image-overlay {
+            opacity: 1;
+        }
+        .bg-purple {
+            background-color: #8a2be2;
+            color: white;
+        }
+        .btn-orange:hover {
+            background-color: #e07a3c !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .btn-outline-orange:hover {
+            background-color: #FF914C !important;
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .product-image-container, .btn-orange, .btn-outline-orange {
+            transition: all 0.3s ease;
+        }
+        .spec-list li {
+            list-style: none;
+            margin-bottom: 16px;
+        }
+        .spec-section {
+            position: relative;
+            overflow: hidden;
+            color: white;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .spec-section .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 50;
+        }
+
+        .spec-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .Text-section {
+            background-color: #ff884d;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-bottom: 3rem;
+        }
+        .footer {
+            background-color: #FF914C;
+            color: white;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .description-section {
+            flex: 0 0 50%;
+            padding-right: 2rem;
+        }
+        .info-section {
+            flex: 0 0 20%;
+            margin-left: auto;
+        }
+        .address-section {
+            flex: 0 0 20%;
+        }
+        #map {
+            height: 300px;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="brand-title-container">
+            <a href="Halaman Utama.html" style="text-decoration: none; color: inherit;">
+                <h1 class="brand-title">Kaizen Rayjin</h1>
+            </a>
+        </div>
+        <div class="header-actions">
+            <a href="login.html" class="login-btn">
+                <i class="fas fa-user me-1"></i> Login
+            </a>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search..." id="search-input">
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <div class="collapse navbar-collapse justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Review.html">REVIEW</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Media.html">MEDIA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="About Us.html">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact.html">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container py-5">
+            <h2 class="mb-5">Samsung Galaxy S25 Ultra</h2>
+            <div class="row">
+                <div class="col-md-5 position-relative">
+                    <!-- Gambar -->
+                    <div class="product-image-container position-relative overflow-hidden rounded-4" 
+                        style="box-shadow: 0 10px 20px rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.05); height: 100%;">
+                        <img src="Image (Samsung S25).png" alt="Samsung Galaxy S25 Ultra" class="img-fluid p-3" style="transition: transform 0.5s ease;" />
+                        <!-- Badge New -->
+                        <span class="position-absolute top-0 start-0 m-2 badge bg-danger" style="font-size: 0.8rem;">
+                            NEW
+                        </span>
+                        <!-- Overlay -->
+                        <div class="image-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                            style="background-color: rgba(255,145,76,0.7); opacity: 0; transition: opacity 0.3s ease;">
+                            <button class="btn btn-light rounded-pill px-4">
+                                <i class="fas fa-expand me-2"></i> Zoom
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-7">
+                    <!-- Panel info produk -->
+                    <div class="product-info p-4 rounded-4" 
+                        style="background-color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: 100%; border: 1px solid rgba(0,0,0,0.05);">
+                        <ul class="list-unstyled">
+                            <!-- Item spesifikasi -->
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-tag me-3" style="color: #FF914C; width: 20px;"></i>
+                                <div><strong>Harga :</strong> <span class="text-danger">Rp 19.999.000</span></div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-calendar-alt me-3" style="color: #FF914C; width: 20px;"></i>
+                                <div><strong>Tanggal Rilis :</strong> Januari 2025</div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-palette me-3" style="color: #FF914C; width: 20px;"></i>
+                                <div><strong>Warna Tersedia :</strong> 
+                                    <span class="badge bg-light text-dark me-1">Silverblue</span>
+                                    <span class="badge bg-light text-dark me-1">Black</span>
+                                    <span class="badge bg-light text-dark me-1">Gray</span>
+                                    <span class="badge bg-light text-dark me-1">Whitesilver</span>
+                                </div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-shield-alt me-3" style="color: #FF914C; width: 20px;"></i>
+                                <div><strong>Garansi :</strong> 4 Tahun</div>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="fas fa-star me-3" style="color: #FF914C; width: 20px;"></i>
+                                <div>
+                                    <strong>Rating :</strong> 
+                                     <span class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </span>
+                                    (4.7/5) <span class="text-muted ms-2">| 346 reviews</span>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <hr class="my-4" style="border-top: 1px dashed rgba(0,0,0,0.1);">
+                        
+                        <!-- Tombol -->
+                        <div class="mt-4 d-flex">
+                            <a href="review.html" class="btn btn-orange me-3 d-flex align-items-center" 
+                            style="background-color: #FF914C; color: white; border-radius: 50px; padding: 0.5rem 1.5rem;">
+                                <i class="fas fa-shopping-cart me-2"></i> Review
+                            </a>
+                            <a href="Contact.html" class="btn btn-outline-orange d-flex align-items-center" 
+                            style="color: #FF914C; border-color: #FF914C; border-radius: 50px; padding: 0.5rem 1.5rem;">
+                                <i class="far fa-address-book me-2"></i> Contact
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specs Section -->
+        <div class="spec-section">
+            <img src="Bacground Hp 1.png" alt="Background" class="background-image" />
+            
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <ul class="spec-list">
+                            <li><strong>Chipset:</strong> Snapdragon 8 Gen 4 (4nm)</li>
+                            <li><strong>Layar:</strong> 6.8 inci QHD+ AMOLED 120Hz</li>
+                            <li><strong>RAM/Storage:</strong> 12/16 GB RAM, 256 GB – 1 TB UFS 4.0</li>
+                            <li><strong>Kamera Belakang:</strong> Quad 200 MP (wide), 12 MP (ultrawide), 10 MP (periscope), 10 MP (tele)</li>
+                            <li><strong>Kamera Depan:</strong> 40 MP</li>
+                            <li><strong>Baterai:</strong> 5000 mAh, fast charging 45W, wireless charging 25W</li>
+                            <li><strong>Fitur Khusus:</strong> S-Pen, Galaxy AI, IP68, DeX Mode</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <h4>SPECIFICATION</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Text Section -->
+        <div class="Text-section">
+            <div class="container">
+            <h4>Samsung Galaxy S25 Ultra</h4>
+            <p>
+                Samsung Galaxy S25 Ultra merupakan smartphone flagship terbaru dari Samsung yang menggabungkan performa ekstrem, desain premium, 
+                dan kecerdasan buatan (AI) tingkat lanjut. Ditenagai oleh chipset Snapdragon 8 Gen 4 Elite for Galaxy, ponsel ini dirancang khusus untuk menangani segala tugas berat, 
+                mulai dari multitasking, produktivitas, hingga gaming dan fotografi profesional.
+            </p>
+            <p>
+                Mengusung layar 6,9 inci Dynamic AMOLED 2X dengan refresh rate adaptif hingga 120Hz dan tingkat kecerahan hingga 2.600 nits, 
+                Galaxy S25 Ultra memberikan pengalaman visual yang sangat cerah dan halus, baik di dalam ruangan maupun luar ruangan. Desainnya kokoh dengan 
+                frame titanium dan pelindung Gorilla Armor generasi terbaru, serta ketahanan air dan debu IP68.
+            </p>
+            <p>
+                Sektor kamera menjadi salah satu daya tarik utama, dengan sistem quad-camera yang mencakup kamera utama 200MP, periscope telephoto 50MP (5x zoom), 
+                lensa telephoto 10MP (3x zoom), dan ultrawide 50MP. Kamera ini didukung oleh fitur ProVisual Engine berbasis AI yang secara otomatis menyempurnakan detail, 
+                warna, dan pencahayaan. Dari sisi software, Galaxy S25 Ultra hadir dengan Android 15 dan One UI 7, serta integrasi mendalam dengan Galaxy AI dan Google Gemini, 
+                memungkinkan pengguna untuk melakukan berbagai aktivitas berbasis kecerdasan buatan seperti meringkas, menerjemahkan, atau mengedit secara otomatis.
+            </p>
+            <p>
+                Dengan baterai 5.000 mAh, pengisian cepat 45W, dan kemampuan wireless charging yang lebih modern (Qi2-ready), 
+                Samsung Galaxy S25 Ultra tidak hanya cepat tapi juga tahan lama. Ini adalah pilihan ideal bagi pengguna yang menginginkan perangkat terbaik di segala aspek—dari layar, 
+                kamera, performa, hingga fitur AI.
+            </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="footer-content">
+                <div class="description-section">
+                    <h3 class="mb-3">Kaizen Rayjin</h3>
+                    <p>
+                        Kaizen Rayjin adalah sebuah platform teknologi mobile yang menggabungkan 
+                        filosofi perbaikan berkelanjutan (Kaizen) dengan kekuatan inovatif dan dinamis 
+                        ala Rayjin—dawa petir dalam mitologi Jepang. Dibangun untuk menjawab tantangan 
+                        era digital modern, Kaizen Rayjin menghadirkan sistem operasi dan antarmuka yang dirancang 
+                        untuk efisiensi, kecepatan, dan pengalaman pengguna yang intuitif.
+                    </p>
+                    <p>Copyright © 2025 Kaizen Rayjin LLC All Rights Reserved</p>
+                </div>
+                <div class="info-section">
+                    <h5 class="mb-3">INFORMATION</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="Review.html">Review</a></li>
+                        <li class="mb-2"><a href="Media.html">Media</a></li>
+                        <li class="mb-2"><a href="About Us.html">About Us</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="address-section">
+                    <h5 class="mb-3">ADDRESS</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">Shibuya, Tokyo, Japan</li>
+                        <li class="mb-2">info@kaizen.rayjin.com</li>
+                        <li>(+62) 414-8390-4505</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([35.6586, 139.7454], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '© OpenStreetMap'
+        }).addTo(map);
+        L.marker([35.6586, 139.7454]).addTo(map)
+        .bindPopup('Kaizen Rayjin HQ<br>Shibuya, Tokyo')
+        .openPopup();
+    </script>
+    <script>
+        document.getElementById("search-input").addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault(); // hindari form submit default
+                const input = e.target.value.trim().toLowerCase();
+                const pageMap = {
+                    "review": "Review.html",
+                    "media": "Media.html",
+                    "about": "About Us.html",
+                    "about us": "About Us.html",
+                    "contact": "Contact.html",
+                    "login": "login.html",
+                    "home": "Halaman Utama.html",
+                    "beranda": "Halaman Utama.html"
+                };
+
+                if (pageMap[input]) {
+                    window.location.href = pageMap[input];
+                } else {
+                    alert("Halaman tidak ditemukan. Silakan cek ejaan Anda.");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

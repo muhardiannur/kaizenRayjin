@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaizen Rayjin - Login</title>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-size: cover;
+            background-image: url(image\ \(login\).png);
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .header {
+            background-color: #FF914C;
+            color: white;
+            padding: 1.5rem 0;
+            position: relative;
+            height: 140px;
+        }
+        .brand-title-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+        }
+        .brand-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .header-actions {
+            position: absolute;
+            width: 100%;
+            bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            box-sizing: border-box;
+        }
+        .search-box {
+            position: relative;
+        }
+        .search-box input {
+            padding-left: 2.5rem;
+            border-radius: 20px;
+            border: none;
+            height: 36px;
+            width: 180px;
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+        }
+        .search-box input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        .search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 0.9rem;
+        }
+        .login-btn {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .login-btn:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+        .navbar-custom {
+            background-color: white;
+            border-radius: 50px;
+            padding: 1rem 3rem;
+            margin: -25px auto 2rem;
+            width: fit-content;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .navbar-custom .nav-item {
+            margin: 0 1.5rem;
+        }
+        .navbar-custom .nav-link {
+            color: #FF914C;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        .navbar-custom .nav-link:hover {
+            color: #FF914C;
+        }
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #FF914C;
+            transition: width 0.3s;
+        }
+        .navbar-custom .nav-link:hover::after {
+            width: 100%;
+        }
+        .divider {
+            border-top: 1px solid rgba(255,255,255,0.3);
+            margin: 1.5rem 0;
+        }
+        .btn-google {
+            background-color: #fff;
+            color: #757575;
+            border: 1px solid #ddd;
+        }
+        .btn-google:hover {
+            background-color: #ffb384;
+        }
+        .btn-orange {
+            background-color: white;
+            color: #FF914C;
+            border: none;
+            transition: all 0.3s;
+        }
+        .btn-orange:hover {
+            background-color: #ffb384;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .main-content {
+            color: white;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 2rem 0;
+        }
+        .welcome-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .login-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            border-radius: 0.5rem;
+            background-color: #ff914cee;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .form-control {
+            background-color: rgba(255,255,255,0.8);
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 0.75rem 1rem;
+        }
+        .form-control:focus {
+            background-color: white;
+            box-shadow: 0 0 0 0.25rem rgba(255, 140, 0, 0.25);
+            border-color: #FF914C;
+        }
+        .form-check-input:checked {
+            background-color: #FF8C00;
+            border-color: #FF914C;
+        }
+        .forgot-password {
+            color: #FF914C !important;
+            transition: all 0.2s;
+        }
+        .forgot-password:hover {
+            color: #FF914C !important;
+            text-decoration: underline !important;
+        }
+        .footer {
+            background-color: #FF914C;
+            color: white;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .description-section {
+            flex: 0 0 50%;
+            padding-right: 2rem;
+        }
+        .info-section {
+            flex: 0 0 20%;
+            margin-left: auto;
+        }
+        .address-section {
+            flex: 0 0 20%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="brand-title-container">
+            <a style="text-decoration: none; color: inherit;">
+                <h1 class="brand-title">Kaizen Rayjin</h1>
+            </a>
+        </div>
+        <div class="header-actions">
+            <button class="login-btn">
+                <i class="fas fa-user me-1"></i> Login
+            </button>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search..." id="search-input">
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <div class="collapse navbar-collapse justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Review.html">REVIEW</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Media.html">MEDIA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="About Us.html">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact.html">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <div class="login-container">
+                <h2 class="welcome-title">Welcome</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="remember">
+                        <label class="form-check-label" for="remember">Remember me</label>
+                        <a href="#" class="float-end forgot-password">Forgot password?</a>
+                    </div>
+                    <a href="index.html" class="btn btn-orange w-100 mb-3 py-2 text-center" id="signin-btn">Sign In</a>
+                </form>
+                
+                <p class="text-center mb-3">or</p>
+                
+                <button class="btn btn-google w-100 mb-2 py-2">
+                    <i class="fab fa-google me-2"></i> Sign in With Google
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="footer-content">
+                <div class="description-section">
+                    <h3 class="mb-3">Kaizen Rayjin</h3>
+                    <p>
+                        Kaizen Rayjin adalah sebuah platform teknologi mobile yang menggabungkan 
+                        filosofi perbaikan berkelanjutan (Kaizen) dengan kekuatan inovatif dan dinamis 
+                        ala Rayjin—dawa petir dalam mitologi Jepang. Dibangun untuk menjawab tantangan 
+                        era digital modern, Kaizen Rayjin menghadirkan sistem operasi dan antarmuka yang dirancang 
+                        untuk efisiensi, kecepatan, dan pengalaman pengguna yang intuitif.
+                    </p>
+                    <p>Copyright © 2025 Kaizen Rayjin LLC All Rights Reserved</p>
+                </div>
+                <div class="info-section">
+                    <h5 class="mb-3">INFORMATION</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="Review.html">Review</a></li>
+                        <li class="mb-2"><a href="Media.html">Media</a></li>
+                        <li class="mb-2"><a href="About Us.html">About Us</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="address-section">
+                    <h5 class="mb-3">ADDRESS</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">Shibuya, Tokyo, Japan</li>
+                        <li class="mb-2">info@kaizen.rayjin.com</li>
+                        <li>(+62) 414-8390-4505</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById("signin-btn").addEventListener("click", function () {
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (email === "" || password === "") {
+                alert("Silakan isi email dan password terlebih dahulu!");
+            } else {
+                window.location.href = "Halaman Utama.html";
+            }
+        });
+    </script>
+    <script>
+        document.getElementById("search-input").addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault(); // hindari form submit default
+                const input = e.target.value.trim().toLowerCase();
+                const pageMap = {
+                    "review": "Review.html",
+                    "media": "Media.html",
+                    "about": "About Us.html",
+                    "about us": "About Us.html",
+                    "contact": "Contact.html",
+                    "login": "login.html",
+                    "home": "Halaman Utama.html",
+                    "beranda": "Halaman Utama.html"
+                };
+
+                if (pageMap[input]) {
+                    window.location.href = pageMap[input];
+                } else {
+                    alert("Halaman tidak ditemukan. Silakan cek ejaan Anda.");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
